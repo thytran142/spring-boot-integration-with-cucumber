@@ -5,6 +5,9 @@
 
 package com.theartisanbase.crm.domain;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.*;
 
 @Entity
@@ -12,6 +15,7 @@ import javax.persistence.*;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @ApiModelProperty(required=false, hidden=true)
     private Long id;
 
     @Column(name="first_name", nullable = false)
@@ -28,16 +32,9 @@ public class User {
 
     @Column(name="status")
     @Enumerated
+    @ApiModelProperty(required=false, hidden=true)
     private UserStatus status;
-
-    public User() {}
-    public User(String firstName, String lastName, String email, String password) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.password = password;
-        this.email = email;
-        this.status = UserStatus.PENDING_ACTIVATED;
-    }
+    
     public Long getId() {
         return id;
     }

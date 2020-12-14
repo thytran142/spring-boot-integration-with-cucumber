@@ -4,21 +4,38 @@
 
 package com.theartisanbase.crm.web;
 
+import com.theartisanbase.crm.domain.User;
+import com.theartisanbase.crm.domain.UserStatus;
 import com.theartisanbase.crm.repo.UserRepository;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(path="/users")
+@RequestMapping(path = "/users")
 public class UserController {
+    @Autowired
     private UserRepository userRepository;
     @Autowired
-    public UserController(UserRepository userRepository) {
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    public UserController(UserRepository userRepository,
+                          BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userRepository = userRepository;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
-    protected UserController() {}
+    protected UserController() {
+    }
 
+    @PostMapping("/sign-up")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void signUp(@RequestBody User user) {
+        user.setPassword(this.bCryptPasswordEncoder.encode(user.getPassword()));
+        user.setStatus(UserStatus.PENDING_ACTIVATED);
+        this.userRepository.save(user);
+    }
 
 }
