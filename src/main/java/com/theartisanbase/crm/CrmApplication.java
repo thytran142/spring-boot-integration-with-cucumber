@@ -19,8 +19,8 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @SpringBootApplication
 @EnableSwagger2
 public class CrmApplication implements CommandLineRunner {
-	@Autowired
-	UserRepository userRepository;
+//	@Autowired
+//	UserRepository userRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(CrmApplication.class, args);
@@ -47,6 +47,6 @@ public class CrmApplication implements CommandLineRunner {
 	 */
 	@Override
 	public void run(String... strings) throws Exception {
-		userRepository.save(new User("Vanessa", "Tran", "vanessa@vanntechs.com", "1234567"));
+	//	userRepository.save(new User("Vanessa", "Tran", "vanessa@vanntechs.com", "1234567"));
 	}
 }
