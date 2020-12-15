@@ -29,6 +29,8 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
     public JWTAuthenticationFilter(AuthenticationManager authenticationManager) {
         this.authenticationManager = authenticationManager;
+
+        setFilterProcessesUrl("/login");
     }
 
     @Override
@@ -49,9 +51,10 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                                             FilterChain chain,
                                             Authentication authentication) throws IOException, ServletException {
         String token = JWT.create()
-                .withSubject(((User) authentication.getPrincipal()).getEmail())
+                .withSubject(((org.springframework.security.core.userdetails.User) authentication.getPrincipal()).getUsername())
                 .withExpiresAt(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
                 .sign(HMAC512(SECRET.getBytes()));
+
         response.addHeader(HEADER_STRING, TOKEN_PREFIX + token);
     }
 }

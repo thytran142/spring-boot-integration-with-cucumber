@@ -1,0 +1,9 @@
+POST {{url}}/users/sign-up
+Content-Type: application/json
+
+{
+  "firstName": "Vanessa",
+  "lastName": "Tran",
+  "email": "thytran142@hotmail.com",
+  "password": "1234567"
+}

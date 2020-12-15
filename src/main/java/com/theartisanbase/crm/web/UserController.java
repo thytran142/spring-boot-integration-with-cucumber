@@ -13,6 +13,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping(path = "/users")
 public class UserController {
@@ -32,7 +34,7 @@ public class UserController {
 
     @PostMapping("/sign-up")
     @ResponseStatus(HttpStatus.CREATED)
-    public void signUp(@RequestBody User user) {
+    public void signUp(@Valid @RequestBody User user) {
         user.setPassword(this.bCryptPasswordEncoder.encode(user.getPassword()));
         user.setStatus(UserStatus.PENDING_ACTIVATED);
         this.userRepository.save(user);

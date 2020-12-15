@@ -1,0 +1,4 @@
+GET {{url}}/users/1
+Accept: application/json
+Authorization: {{token}}
+###
