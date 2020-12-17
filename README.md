@@ -1,5 +1,5 @@
 ### How to integrate Cucumber Gherkin BDD tests with SpringBoot integration testing
-I'm sure most of use, who want to integrate Gherkin BDD with Spring Boot Rest API project, will once face some difficulties like what I did. 
+I'm sure most of us, who want to integrate Gherkin BDD with Spring Boot Rest API project, will once face some difficulties like what I did. 
 First of all, when I tried to search online, there are many repositories integrating RestTemplate with a Spring Boot project so Cucumber feature tests can call the API and run the test themselves. However, I find it is not what I want to achieve. I don't like to re-write tests where I have already tested some by MockMvc using SpringBoot runner. So I created this Repo as my experiment and it really works.
 #### UI Documentation
 http://localhost:8080/swagger-ui/index.html#
