@@ -16,8 +16,7 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.context.annotation.Bean;
 
-import static com.theartisanbase.crm.security.SecurityConstants.LOGIN_URL;
-import static com.theartisanbase.crm.security.SecurityConstants.SIGN_UP_URL;
+import static com.theartisanbase.crm.security.SecurityConstants.*;
 
 @EnableWebSecurity
 public class WebSecurity extends WebSecurityConfigurerAdapter{
@@ -33,7 +32,8 @@ public class WebSecurity extends WebSecurityConfigurerAdapter{
             "/configuration/ui",
             "/configuration/security",
             "/swagger-ui/**",
-            "/webjars/**"
+            "/webjars/**",
+            VERSION_URL
     };
 
     public WebSecurity(UserDetailsServiceImpl userDetailsServiceImpl,

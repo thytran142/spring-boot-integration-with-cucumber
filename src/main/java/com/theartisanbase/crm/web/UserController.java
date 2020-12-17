@@ -7,7 +7,6 @@ package com.theartisanbase.crm.web;
 import com.theartisanbase.crm.domain.User;
 import com.theartisanbase.crm.domain.UserStatus;
 import com.theartisanbase.crm.repo.UserRepository;
-import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

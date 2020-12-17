@@ -45,6 +45,9 @@ public class User {
     @Enumerated
     @ApiModelProperty(required=false, hidden=true)
     private UserStatus status;
+    public User() {
+        this.status = UserStatus.PENDING_ACTIVATED;
+    }
 
     public Long getId() {
         return id;
@@ -54,32 +57,61 @@ public class User {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
+    /**
+     *
+     * @param firstName First name of a user
+     * @return User
+     */
+    public User setFirstName(String firstName) {
         this.firstName = firstName;
+
+        return this;
     }
 
     public String getLastName() {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
+    /**
+     *
+     * @param lastName of a user
+     * @return User
+     */
+    public User setLastName(String lastName) {
         this.lastName = lastName;
+
+        return this;
     }
     @JsonIgnore
     public String getPassword() {
         return password;
     }
+
+    /**
+     *
+     * @param password Password of a user
+     * @return User
+     */
     @JsonProperty
-    public void setPassword(String password) {
+    public User setPassword(String password) {
         this.password = password;
+
+        return this;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    /**
+     *
+     * @param email Email of a user
+     * @return User
+     */
+    public User setEmail(String email) {
         this.email = email;
+
+        return this;
     }
 
     public UserStatus getStatus() {

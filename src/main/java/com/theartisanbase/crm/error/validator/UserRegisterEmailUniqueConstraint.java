@@ -10,7 +10,7 @@ import java.lang.annotation.*;
 
 @Documented
 @Constraint(validatedBy = UserRegisterEmailUniqueValidator.class)
-@Target( { ElementType.METHOD, ElementType.FIELD })
+@Target( { ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface UserRegisterEmailUniqueConstraint {
     String message() default "This email is registered. Please login instead.";

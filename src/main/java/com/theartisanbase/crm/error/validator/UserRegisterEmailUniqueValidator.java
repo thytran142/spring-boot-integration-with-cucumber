@@ -12,9 +12,9 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 public class UserRegisterEmailUniqueValidator implements ConstraintValidator<UserRegisterEmailUniqueConstraint, String> {
-
     @Autowired
     private UserRepository userRepository;
+    public UserRegisterEmailUniqueValidator() {}
     public UserRegisterEmailUniqueValidator(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
